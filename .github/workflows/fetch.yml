@@ -1,0 +1,26 @@
+name: fetch
+on:
+  push:
+    paths: ['.github/workflows/fetch.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: download
+        run: |
+          for p in 10:wpv6dl2r 11:av1fdizx 12:v9lld4bz 13:159w1tsn 14:zhyvh19g 15:956nyabg 16:sr7cpq3l 17:6berploa 18:zyputaqw 19:e8l5njnd 2:ocb5n65l 20:lyvqsmzy 21:i9fpk5ay 22:g5g4z5yw 23:hvr2je6s 24:rl168nps 25:dl20dlt6 26:g43jis8d 27:kvb4g9lt 28:hp1mf8np 29:2pra6513 30:ymfkteci 31:14anfxwc 32:vxudv4rg 33:njlqyn2r 34:sktsskgi 35:o6bx6oxn 36:y5hdcm3h 37:wibsx045 38:5r75ho5l 39:ayotzmu9 40:h0d898hy 41:imqy3k5h 42:zv32wvlr 43:lft3i4pu 44:ljcmwmw4 45:ri8tlapl 46:zgxd9r7m 47:ouustx7j 48:dtfp6v5d 49:8upf2lbm 50:brneql23 51:gf5zt5w0 52:9r9fz73z 53:vayfbrzi 54:jazkm6cs 55:x7z44ze5 56:kkmg6gio 57:4i8gnixg 58:h3tsx4tn 59:5kddryt4 6:qq66gajx 60:sx8ofehi 61:eajuofi3 62:jhkjz4pq 63:uetn0rse 64:ppxww4w7 65:c5ozcnua 66:mesu2g5x 7:w92rpkg4 9:3dryd43g; do
+            n=${p%%:*}; c=${p##*:}
+            curl -fsSL --retry 3 -o a$n.mp3 https://pomf2.lain.la/f/$c.mp3
+          done
+          ls -l a*.mp3 | wc -l
+      - name: commit
+        run: |
+          git config user.name bot
+          git config user.email bot@users.noreply.github.com
+          git add a*.mp3
+          git commit -m "add audio"
+          git push
