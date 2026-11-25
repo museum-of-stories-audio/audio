@@ -1,0 +1,26 @@
+name: fetch2
+on:
+  push:
+    paths: ['.github/workflows/fetch2.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: download
+        run: |
+          for p in 1:1w0tvp1q 2:4h4mqp2m 3:6xh9rf0z 4:bb0f5hai 5:jrgkvoop 6:n5u4n1kj 7:o6oukq3o; do
+            n=${p%%:*}; c=${p##*:}
+            curl -fsSL --retry 3 -o c$n.mp3 https://pomf2.lain.la/f/$c.mp3
+          done
+          ls -l c*.mp3 | wc -l
+      - name: commit
+        run: |
+          git config user.name bot
+          git config user.email bot@users.noreply.github.com
+          git add c*.mp3
+          git commit -m "add audio"
+          git push
