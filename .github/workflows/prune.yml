@@ -1,0 +1,19 @@
+name: prune
+on:
+  push:
+    paths: ['.github/workflows/prune.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: run
+        run: |
+          git config user.name bot
+          git config user.email bot@users.noreply.github.com
+          git rm -q a45.mp3 a38.mp3 a63.mp3 a44.mp3 a29.mp3 a58.mp3 a64.mp3 a42.mp3 a57.mp3 a50.mp3 a35.mp3 a53.mp3 c7.mp3 a33.mp3 a30.mp3 c4.mp3 a24.mp3 a12.mp3 a15.mp3 a2.mp3 a20.mp3 a9.mp3 a60.mp3 a48.mp3 a36.mp3 a49.mp3 a66.mp3 a61.mp3 a40.mp3 a39.mp3 a43.mp3 a46.mp3 a55.mp3 a34.mp3 a56.mp3 c3.mp3 c6.mp3 c1.mp3 a27.mp3 a11.mp3 a17.mp3 a21.mp3 a6.mp3 a13.mp3 a7.mp3
+          git commit -m prune
+          git push
